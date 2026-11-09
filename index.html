@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="theme-color" content="#04050f">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Batalha na Rede</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.2/peerjs.min.js"></script>
+</head>
+<body>
+
+<!-- MENU -->
+<section id="menu" class="screen active">
+  <div class="card">
+    <h1>Batalha na Rede</h1>
+    <p class="sub">Vôlei futurista para dois jogadores</p>
+    <button class="btn big" id="btnOnline">Modo Online</button>
+    <button class="btn big alt" id="btnLocal">Modo Local</button>
+    <p class="chips"><span>Computador</span><span>Celular</span><span>Tablet</span></p>
+    <p class="hint">Online funciona entre aparelhos diferentes: um joga no computador, o outro no celular.<br>
+    Local: Jogador 1 usa <b>A D W</b> e Jogador 2 usa <b>← → ↑</b>, ou os botões na tela.<br>
+    O primeiro a fazer 7 pontos vence.</p>
+  </div>
+</section>
+
+<!-- SALAS -->
+<section id="lobby" class="screen">
+  <div class="card">
+    <h2>Modo Online</h2>
+    <button class="btn big" id="btnCreate">Criar sala</button>
+    <div class="or">ou entre com um código</div>
+    <div class="row">
+      <input id="roomInput" maxlength="4" placeholder="Código" autocomplete="off" autocapitalize="characters" spellcheck="false" inputmode="text">
+      <button class="btn" id="btnJoin">Entrar</button>
+    </div>
+    <div id="waitBox" class="waitbox hidden">
+      <p>Código da sala</p>
+      <div id="roomCode">----</div>
+      <p class="small">Envie o código ou o link para o seu amigo.<br>Aguardando o outro jogador…</p>
+      <div class="row share">
+        <button class="btn small" id="btnCopy">Copiar código</button>
+        <button class="btn small alt" id="btnShare">Compartilhar link</button>
+      </div>
+    </div>
+    <p id="lobbyMsg" class="msg"></p>
+    <button class="btn ghost" id="btnLobbyBack">Voltar</button>
+  </div>
+</section>
+
+<!-- JOGO -->
+<section id="game" class="screen">
+  <div class="hud">
+    <button class="btn small ghost" id="btnExit">Sair</button>
+    <div class="score">
+      <span id="nameA" class="tA">Magenta</span>
+      <b id="scoreA">0</b><i>:</i><b id="scoreB">0</b>
+      <span id="nameB" class="tB">Ciano</span>
+    </div>
+    <div id="roomTag" class="roomtag"><span id="rtCode"></span><span id="rtPing"></span></div>
+  </div>
+
+  <div class="stage" id="stage">
+    <canvas id="cv" width="800" height="400"></canvas>
+    <div class="tools">
+      <button class="ico" id="btnMute" aria-label="Som">🔊</button>
+      <button class="ico" id="btnPad" aria-label="Botões na tela">🎮</button>
+    </div>
+    <div id="overlay" class="overlay hidden">
+      <div id="overlayText"></div>
+      <button class="btn" id="btnRematch">Jogar de novo</button>
+    </div>
+  </div>
+
+  <p id="rotateHint" class="rotate">Gire o aparelho para jogar em uma tela maior</p>
+  <div id="pad" class="pad"></div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
